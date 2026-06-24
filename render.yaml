@@ -1,0 +1,29 @@
+# ========================================
+# RENDER DEPLOYMENT CONFIG
+# Render reads this file automatically
+# ========================================
+
+services:
+  - type: web
+    name: ai-content-automator
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false # Set this in Render dashboard
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: SENDER_EMAIL
+        sync: false
+      - key: REVIEWER_EMAIL
+        sync: false
+      - key: HEYGEN_API_KEY
+        sync: false
+      - key: APP_URL
+        sync: false # Set to your Render URL e.g. https://ai-automator.onrender.com
+      - key: TARGET_URL
+        value: https://leftclicktech.ai/service/
+      - key: APPROVAL_TIMEOUT
+        value: "300"
+    healthCheckPath: /health
