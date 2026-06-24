@@ -144,3 +144,4 @@ cd src
 python demo.py
 # Auto-approves after 5 seconds — perfect for presentations
 ```
+# video-generator
