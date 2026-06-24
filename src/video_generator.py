@@ -125,8 +125,8 @@ def _poll_did_status(talk_id: str, job_id: str,
 
 
 def download_video(url: str, job_id: str) -> str:
-    os.makedirs("output", exist_ok=True)
-    path = f"output/video_{job_id[:8]}.mp4"
+    os.makedirs("/tmp/output", exist_ok=True)
+    path = f"/tmp/output/video_{job_id[:8]}.mp4"
 
     print(f"[STEP 5] 📥 Downloading video to {path}...")
 
@@ -147,8 +147,8 @@ def _simulate_video_generation(script: str, job_id: str) -> dict:
         print(f"[STEP 5] 🔄 Rendering video... {i*20}%")
         time.sleep(1)
 
-    os.makedirs("output", exist_ok=True)
-    output_path = f"output/video_{job_id[:8]}_SIMULATED.txt"
+    os.makedirs("/tmp/output", exist_ok=True)
+    output_path = f"/tmp/output/video_{job_id[:8]}_SIMULATED.txt"
     voiceover = extract_voiceover_text(script)
 
     with open(output_path, "w") as f:
