@@ -180,15 +180,15 @@ def generate_job_id() -> str:
 # ----------------------------------------
 def save_job(job_id: str, data: dict):
     """Save job data to JSON file."""
-    os.makedirs("output", exist_ok=True)
-    path = f"output/job_{job_id}.json"
+    os.makedirs("/tmp/output", exist_ok=True)
+    path = f"/tmp/output/job_{job_id}.json"
     with open(path, "w") as f:
         json.dump(data, f, indent=2)
 
 
 def load_job(job_id: str) -> dict:
     """Load job data from JSON file."""
-    path = f"output/job_{job_id}.json"
+    path = f"/tmp/output/job_{job_id}.json"
     if os.path.exists(path):
         with open(path, "r") as f:
             return json.load(f)
